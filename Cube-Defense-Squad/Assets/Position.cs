@@ -5,6 +5,8 @@ using UnityEngine;
 public class Position : MonoBehaviour
 {
     public GameObject Mirror;
+    public GameObject NewMirror;
+    private Reflect MirrorOrientation;
     public enum MirrorRotation
     {
         leftUp = 45,
@@ -22,12 +24,16 @@ public class Position : MonoBehaviour
                 {
                     print( "object is clicked by mouse");
                     if(possibleRotation == Position.MirrorRotation.leftUp){
-                        Instantiate(Mirror, hit.transform.position, Quaternion.Euler((int) possibleRotation,90,0));
+                        NewMirror = Instantiate(Mirror, hit.transform.position, Quaternion.Euler((int) possibleRotation,90,0));
+                        MirrorOrientation = NewMirror.GetComponent<Reflect>();
+                        MirrorOrientation.currentOrientation = Reflect.ReflectState.LeftUP;
                         hit.collider.gameObject.SetActive(false);
                     }
 
                     if(possibleRotation == Position.MirrorRotation.rightUp){
-                        Instantiate(Mirror, hit.transform.position, Quaternion.Euler((int) possibleRotation,90,0));
+                        NewMirror = Instantiate(Mirror, hit.transform.position, Quaternion.Euler((int) possibleRotation,90,0));
+                        MirrorOrientation = NewMirror.GetComponent<Reflect>();
+                        MirrorOrientation.currentOrientation = Reflect.ReflectState.RightUP;
                         hit.collider.gameObject.SetActive(false);
                     }
                 }

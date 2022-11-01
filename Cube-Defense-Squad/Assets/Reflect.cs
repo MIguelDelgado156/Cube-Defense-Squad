@@ -9,6 +9,13 @@ public class Reflect : MonoBehaviour
     public int CurrentIndex = 1;
     public GameObject Line;
 
+    public enum ReflectState
+    {
+        LeftUP,
+        RightUP,
+    }
+    public ReflectState currentOrientation;
+
     void Awake()
     {
         Line = GameObject.Find("Line");

@@ -12,6 +12,7 @@ public class move : MonoBehaviour
     public int CurrentIndex = 1;
     private float test = 0f;
     public float Speed = 10f;
+    public bool Reflected = false;
     private Reflect MirrorOrientation;
 
     float PrevX;
@@ -41,6 +42,7 @@ public class move : MonoBehaviour
     void Start()
     {
         CurrentIndex = 1;
+        Reflected = false;
         PrevX = lineRenderer.GetPosition(CurrentIndex).x;
         PrevY = lineRenderer.GetPosition(CurrentIndex).y;
         PrevZ = lineRenderer.GetPosition(CurrentIndex).z;
@@ -48,19 +50,45 @@ public class move : MonoBehaviour
 
     void Update()
     {
+        if(MirrorOrientation != null && MirrorOrientation.currentOrientation == Reflect.ReflectState.LeftUP)
+        {
+            LeftUPMirror();
+        }
+        if(MirrorOrientation != null && MirrorOrientation.currentOrientation == Reflect.ReflectState.RightUP)
+        {
+            RightUPMirror();
+        }
+        startMove();
+    }
+
+    void startMove()
+    {
         test += 0.1f * Time.deltaTime * Speed;
 
-        if (state == varToUpdate.z)
+        if (state == varToUpdate.z && !Reflected && direction == Direction.LEFT)
+        {
+            lineRenderer.SetPosition(CurrentIndex, new Vector3(PrevX, PrevY, PrevZ -= (0.1f * Time.deltaTime * Speed)));
+            collider.center = new Vector3(0f, 0f, -test);
+        }
+        if (state == varToUpdate.z && !Reflected && direction == Direction.RIGHT)
         {
             lineRenderer.SetPosition(CurrentIndex, new Vector3(PrevX, PrevY, PrevZ += (0.1f * Time.deltaTime * Speed)));
             collider.center = new Vector3(0f, 0f, test);
         }
-        if (state == varToUpdate.y)
+        if (state == varToUpdate.y && !Reflected && direction == Direction.UP)
         {
             lineRenderer.SetPosition(CurrentIndex, new Vector3(PrevX, PrevY += (0.1f * Time.deltaTime * Speed), PrevZ));
             collider.center = new Vector3(0f, test, 0f);
         }
-        
+        if (state == varToUpdate.y && !Reflected && direction == Direction.DOWN)
+        {
+            lineRenderer.SetPosition(CurrentIndex, new Vector3(PrevX, PrevY -= (0.1f * Time.deltaTime * Speed), PrevZ));
+            collider.center = new Vector3(0f, -test, 0f);
+        }
+    }
+
+    void LeftUPMirror()
+    {
         if (MirrorOrientation != null)
         {
             // All possible direction for left up
@@ -68,42 +96,67 @@ public class move : MonoBehaviour
             {
                 lineRenderer.SetPosition(CurrentIndex, new Vector3(PrevX, PrevY -= (0.1f * Time.deltaTime * Speed), PrevZ));
                 collider.center = new Vector3(PrevX, PrevY, PrevZ);
+                Reflected = true;
                 direction = Direction.DOWN;
             }
             if (state == varToUpdate.y && MirrorOrientation.currentOrientation == Reflect.ReflectState.LeftUP && PrevDirection == Direction.RIGHT)
             {
                 lineRenderer.SetPosition(CurrentIndex, new Vector3(PrevX, PrevY += (0.1f * Time.deltaTime * Speed), PrevZ));
                 collider.center = new Vector3(PrevX, PrevY, PrevZ);
+                Reflected = true;
                 direction = Direction.UP;
             }
             if (state == varToUpdate.z && MirrorOrientation.currentOrientation == Reflect.ReflectState.LeftUP && PrevDirection == Direction.UP)
             {
                 lineRenderer.SetPosition(CurrentIndex, new Vector3(PrevX, PrevY, PrevZ += (0.1f * Time.deltaTime * Speed)));
                 collider.center = new Vector3(PrevX, PrevY, PrevZ);
+                Reflected = true;
                 direction = Direction.RIGHT;
             }
             if (state == varToUpdate.z && MirrorOrientation.currentOrientation == Reflect.ReflectState.LeftUP && PrevDirection == Direction.DOWN)
             {
                 lineRenderer.SetPosition(CurrentIndex, new Vector3(PrevX, PrevY, PrevZ += (0.1f * Time.deltaTime * Speed)));
                 collider.center = new Vector3(PrevX, PrevY, PrevZ);
-                direction = Direction.RIGHT;
-            }
+                Reflected = true;
+                direction = Direction.LEFT;
+            } 
+        }
+    }
 
-            //All possible directions for right up
-            if (state == varToUpdate.z && MirrorOrientation.currentOrientation == Reflect.ReflectState.RightUP && PrevDirection == Direction.UP)
-            {
-                print("OOOOOOOOOOOOOOO");
-                lineRenderer.SetPosition(CurrentIndex, new Vector3(PrevX, PrevY, PrevZ -= (0.1f * Time.deltaTime * Speed)));
-                collider.center = new Vector3(PrevX, PrevY, PrevZ);
-                //direction = Direction.LEFT;
-            }
-           
+    void RightUPMirror()
+    {
+        if (state == varToUpdate.z && MirrorOrientation.currentOrientation == Reflect.ReflectState.RightUP && PrevDirection == Direction.UP)
+        {
+            lineRenderer.SetPosition(CurrentIndex, new Vector3(PrevX, PrevY, PrevZ -= (0.1f * Time.deltaTime * Speed)));
+            collider.center = new Vector3(PrevX, PrevY, PrevZ);
+            Reflected = true;
+            direction = Direction.LEFT;
+        }
+        if (state == varToUpdate.z && MirrorOrientation.currentOrientation == Reflect.ReflectState.RightUP && PrevDirection == Direction.DOWN)
+        {
+            lineRenderer.SetPosition(CurrentIndex, new Vector3(PrevX, PrevY, PrevZ += (0.1f * Time.deltaTime * Speed)));
+            collider.center = new Vector3(PrevX, PrevY, PrevZ);
+            Reflected = true;
+            direction = Direction.RIGHT;
+        } 
+        if (state == varToUpdate.y && MirrorOrientation.currentOrientation == Reflect.ReflectState.RightUP && PrevDirection == Direction.LEFT)
+        {
+            lineRenderer.SetPosition(CurrentIndex, new Vector3(PrevX, PrevY += (0.1f * Time.deltaTime * Speed), PrevZ));
+            collider.center = new Vector3(PrevX, PrevY, PrevZ);
+            Reflected = true;
+            direction = Direction.UP;
+        }
+        if (state == varToUpdate.y && MirrorOrientation.currentOrientation == Reflect.ReflectState.RightUP && PrevDirection == Direction.RIGHT)
+        {
+            lineRenderer.SetPosition(CurrentIndex, new Vector3(PrevX, PrevY -= (0.1f * Time.deltaTime * Speed), PrevZ));
+            collider.center = new Vector3(PrevX, PrevY, PrevZ);
+            Reflected = true;
+            direction = Direction.DOWN;
         }
     }
 
     void OnTriggerEnter(Collider other)
     {
-        print("Collision");
         MirrorOrientation = other.gameObject.GetComponent<Reflect>();
         PrevDirection = direction;
 

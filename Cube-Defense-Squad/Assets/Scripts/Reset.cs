@@ -26,8 +26,11 @@ public class Reset : MonoBehaviour
             OriginalPosition = Oldline.transform.position;
             OriginalRoation = Oldline.transform.rotation;
 
-            Destroy(Oldline);
+
             Newline = Instantiate(line, OriginalPosition, OriginalRoation);
+            Newline.GetComponent<move>().direction = Oldline.GetComponent<move>().direction;
+            Newline.GetComponent<move>().state = Oldline.GetComponent<move>().state;
+            Destroy(Oldline);
             Newline.transform.parent = gameObject.transform;
             Newline.name = "Line";
         }

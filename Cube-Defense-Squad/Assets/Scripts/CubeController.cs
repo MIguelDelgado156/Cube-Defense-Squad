@@ -9,6 +9,7 @@ public class CubeController : MonoBehaviour
     public bool LEFT;
     public bool RIGHT;
     public bool Done;
+    public bool OR;
     public float CurrRotX;
     public float CurrRotY;
     public float CurrRotZ;
@@ -26,6 +27,7 @@ public class CubeController : MonoBehaviour
         {
             LEFT = true;
             Done = false;
+            OR = true;
         }
         if(Input.GetKeyDown(KeyCode.S) && Done)
         {
@@ -36,6 +38,7 @@ public class CubeController : MonoBehaviour
         {
             RIGHT = true;
             Done = false;
+            OR = true;
         }
     }
 
@@ -73,6 +76,10 @@ public class CubeController : MonoBehaviour
             {
                 CurrRotY = 0;
             }
+            if(CurrRotY == -180f || CurrRotY == 0f)
+            {
+                OR = false;
+            }
             LEFT = false;
         }
 
@@ -83,8 +90,13 @@ public class CubeController : MonoBehaviour
             {
                 CurrRotY = 0;
             }
+            if(CurrRotY == 180f || CurrRotY == 0f)
+            {
+                OR = false;
+            }
             RIGHT = false;
         }
+
     }
 
     void Start()
@@ -93,9 +105,9 @@ public class CubeController : MonoBehaviour
         DOWN = false;
         RIGHT = false;
         LEFT = false;
+        OR = false;
         CurrRotX = 0f;
         CurrRotY = 0f;
-        CurrRotZ = 0f;
     }
 
     void Update()

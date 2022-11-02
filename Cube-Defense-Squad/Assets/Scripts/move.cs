@@ -10,9 +10,12 @@ public class move : MonoBehaviour
     public LineRenderer lineRenderer;
     public BoxCollider collider;
     public int CurrentIndex = 1;
-    private float test = 0f;
     public float Speed = 10f;
-    public bool Reflected = false;
+
+    private float test = 0f;
+    private bool Reflected;
+    private bool StartGame;
+    private bool Stopped;
     private Reflect MirrorOrientation;
 
     float PrevX;
@@ -43,6 +46,8 @@ public class move : MonoBehaviour
     {
         CurrentIndex = 1;
         Reflected = false;
+        StartGame = false;
+        Stopped = false;
         PrevX = lineRenderer.GetPosition(CurrentIndex).x;
         PrevY = lineRenderer.GetPosition(CurrentIndex).y;
         PrevZ = lineRenderer.GetPosition(CurrentIndex).z;
@@ -50,15 +55,22 @@ public class move : MonoBehaviour
 
     void Update()
     {
-        if(MirrorOrientation != null && MirrorOrientation.currentOrientation == Reflect.ReflectState.LeftUP)
+        if(Input.GetKeyUp(KeyCode.S))
         {
-            LeftUPMirror();
+            StartGame = true;
         }
-        if(MirrorOrientation != null && MirrorOrientation.currentOrientation == Reflect.ReflectState.RightUP)
+        if(StartGame && !Stopped)
         {
-            RightUPMirror();
+            if(MirrorOrientation != null && MirrorOrientation.currentOrientation == Reflect.ReflectState.LeftUP)
+            {
+                LeftUPMirror();
+            }
+            if(MirrorOrientation != null && MirrorOrientation.currentOrientation == Reflect.ReflectState.RightUP)
+            {
+                RightUPMirror();
+            }
+            startMove();
         }
-        startMove();
     }
 
     void startMove()
@@ -157,23 +169,30 @@ public class move : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        MirrorOrientation = other.gameObject.GetComponent<Reflect>();
-        PrevDirection = direction;
-
-        PrevX = lineRenderer.GetPosition(CurrentIndex).x;
-        PrevY = lineRenderer.GetPosition(CurrentIndex).y;
-        PrevZ = lineRenderer.GetPosition(CurrentIndex).z;
-
-        lineRenderer.positionCount += 1;
-        if (direction == Direction.LEFT || direction == Direction.RIGHT)
+        if(other.gameObject.tag == "Mirror")
         {
-            state = varToUpdate.y;
-        }
-        if (direction == Direction.UP || direction == Direction.DOWN)
-        {
-            state = varToUpdate.z;
-        }
+            MirrorOrientation = other.gameObject.GetComponent<Reflect>();
+            PrevDirection = direction;
 
-        CurrentIndex += 1;
+            PrevX = lineRenderer.GetPosition(CurrentIndex).x;
+            PrevY = lineRenderer.GetPosition(CurrentIndex).y;
+            PrevZ = lineRenderer.GetPosition(CurrentIndex).z;
+
+            lineRenderer.positionCount += 1;
+            if (direction == Direction.LEFT || direction == Direction.RIGHT)
+            {
+                state = varToUpdate.y;
+            }
+            if (direction == Direction.UP || direction == Direction.DOWN)
+            {
+                state = varToUpdate.z;
+            }
+
+            CurrentIndex += 1;
+        }
+        else
+        {
+            Stopped = true;
+        }
     }
 }

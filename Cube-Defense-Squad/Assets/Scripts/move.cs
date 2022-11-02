@@ -55,7 +55,7 @@ public class move : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyUp(KeyCode.S))
+        if(Input.GetKeyUp(KeyCode.G))
         {
             StartGame = true;
         }

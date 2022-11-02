@@ -26,6 +26,7 @@ public class Position : MonoBehaviour
                     NewMirror = Instantiate(Mirror, hit.transform.position, Quaternion.Euler((int) possibleRotation,90,0));
                     MirrorOrientation = NewMirror.GetComponent<Reflect>();
                     MirrorOrientation.currentOrientation = Reflect.ReflectState.LeftUP;
+                    NewMirror.transform.parent = gameObject.transform.parent.transform;
                     hit.collider.gameObject.SetActive(false);
                 }
                 if(hit.collider.gameObject.tag == "RUPoint")
@@ -34,6 +35,7 @@ public class Position : MonoBehaviour
                     NewMirror = Instantiate(Mirror, hit.transform.position, Quaternion.Euler((int) possibleRotation,90,0));
                     MirrorOrientation = NewMirror.GetComponent<Reflect>();
                     MirrorOrientation.currentOrientation = Reflect.ReflectState.RightUP;
+                    NewMirror.transform.parent = gameObject.transform.parent.transform;
                     hit.collider.gameObject.SetActive(false);
                 }
             }

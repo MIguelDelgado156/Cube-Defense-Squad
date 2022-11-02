@@ -147,8 +147,7 @@ MonoBehaviour:
   lineRenderer: {fileID: 4057857131832068995}
   collider: {fileID: 4057857131832068992}
   CurrentIndex: 0
-  Speed: 10
-  Reflected: 0
+  Speed: 150
   state: 2
   direction: 2
 --- !u!65 &4057857131832068992

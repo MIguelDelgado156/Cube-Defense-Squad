@@ -14,7 +14,7 @@ public class move : MonoBehaviour
 
     private float test = 0f;
     private bool Reflected;
-    private bool StartGame;
+    public bool StartGame;
     private bool Stopped;
     private Reflect MirrorOrientation;
 
@@ -189,6 +189,10 @@ public class move : MonoBehaviour
             }
 
             CurrentIndex += 1;
+        }
+        else if(other.gameObject.tag == "Battery")
+        {
+            other.gameObject.GetComponent<Activate>().Charged = true;
         }
         else
         {

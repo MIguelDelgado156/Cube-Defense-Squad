@@ -8,6 +8,8 @@ TagManager:
   - Point
   - RUPoint
   - LUPoint
+  - Battery
+  - Door
   layers:
   - Default
   - TransparentFX

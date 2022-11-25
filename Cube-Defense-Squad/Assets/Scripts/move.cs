@@ -10,6 +10,7 @@ public class move : MonoBehaviour
     public LineRenderer lineRenderer;
     public BoxCollider collider;
     public int CurrentIndex = 1;
+    public int Charge = 0;
     public float Speed = 10f;
 
     private float test = 0f;
@@ -189,6 +190,10 @@ public class move : MonoBehaviour
             }
 
             CurrentIndex += 1;
+        }
+        else if(other.gameObject.tag == "Battery")
+        {
+            Charge += 1;
         }
         else
         {

@@ -53,12 +53,13 @@ public class move : MonoBehaviour
         PrevZ = lineRenderer.GetPosition(CurrentIndex).z;
     }
 
+    public void startFunc()
+    {
+        StartGame = true;
+    }
+
     void Update()
     {
-        if(Input.GetKeyUp(KeyCode.G))
-        {
-            StartGame = true;
-        }
         if(StartGame && !Stopped)
         {
             if(MirrorOrientation != null && MirrorOrientation.currentOrientation == Reflect.ReflectState.LeftUP)
@@ -127,7 +128,7 @@ public class move : MonoBehaviour
             }
             if (state == varToUpdate.z && MirrorOrientation.currentOrientation == Reflect.ReflectState.LeftUP && PrevDirection == Direction.DOWN)
             {
-                lineRenderer.SetPosition(CurrentIndex, new Vector3(PrevX, PrevY, PrevZ += (0.1f * Time.deltaTime * Speed)));
+                lineRenderer.SetPosition(CurrentIndex, new Vector3(PrevX, PrevY, PrevZ -= (0.1f * Time.deltaTime * Speed)));
                 collider.center = new Vector3(PrevX, PrevY, PrevZ);
                 Reflected = true;
                 direction = Direction.LEFT;

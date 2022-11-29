@@ -9,14 +9,17 @@ TagManager:
   - RUPoint
   - LUPoint
   - Battery
+  - Spliter
+  - End
+  - Point_Face_1
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - split
   - Water
   - UI
-  - 
+  - line
   - 
   - 
   - 

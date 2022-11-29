@@ -55,7 +55,7 @@ public class Reset : MonoBehaviour
     {
         foreach (Transform child in Points.transform)
         {
-            if (child.tag == "Point")
+            if (child.tag == "Point" || child.tag == "Point_Face_1")
             {
                 child.gameObject.SetActive(false);
             }

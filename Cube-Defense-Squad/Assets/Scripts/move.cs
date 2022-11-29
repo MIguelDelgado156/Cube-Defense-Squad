@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class move : MonoBehaviour
@@ -194,6 +195,10 @@ public class move : MonoBehaviour
         else if(other.gameObject.tag == "Battery")
         {
             other.gameObject.GetComponent<Activate>().Charged = true;
+        }
+        else if(other.gameObject.tag == "End")
+        {
+            SceneManager.LoadScene("End");
         }
         else
         {

@@ -8,6 +8,7 @@ public class Activate : MonoBehaviour
     public bool Done;
     public GameObject Door;
     public GameObject WallEnd;
+    public GameObject WallStart;
 
     void Start()
     {
@@ -22,5 +23,12 @@ public class Activate : MonoBehaviour
             LeanTween.move(Door, WallEnd.transform, 1f);
             Done = true;
         }
+    }
+
+    public void ResetWall()
+    {
+        LeanTween.move(Door, WallStart.transform, 1f);
+        Done = false;
+        Charged = false;
     }
 }

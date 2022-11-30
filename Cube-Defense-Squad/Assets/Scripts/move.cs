@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class move : MonoBehaviour
@@ -15,7 +16,7 @@ public class move : MonoBehaviour
 
     private float test = 0f;
     private bool Reflected;
-    private bool StartGame;
+    public bool StartGame;
     private bool Stopped;
     private Reflect MirrorOrientation;
 
@@ -54,12 +55,13 @@ public class move : MonoBehaviour
         PrevZ = lineRenderer.GetPosition(CurrentIndex).z;
     }
 
+    public void startFunc()
+    {
+        StartGame = true;
+    }
+
     void Update()
     {
-        if(Input.GetKeyUp(KeyCode.G))
-        {
-            StartGame = true;
-        }
         if(StartGame && !Stopped)
         {
             if(MirrorOrientation != null && MirrorOrientation.currentOrientation == Reflect.ReflectState.LeftUP)
@@ -128,7 +130,7 @@ public class move : MonoBehaviour
             }
             if (state == varToUpdate.z && MirrorOrientation.currentOrientation == Reflect.ReflectState.LeftUP && PrevDirection == Direction.DOWN)
             {
-                lineRenderer.SetPosition(CurrentIndex, new Vector3(PrevX, PrevY, PrevZ += (0.1f * Time.deltaTime * Speed)));
+                lineRenderer.SetPosition(CurrentIndex, new Vector3(PrevX, PrevY, PrevZ -= (0.1f * Time.deltaTime * Speed)));
                 collider.center = new Vector3(PrevX, PrevY, PrevZ);
                 Reflected = true;
                 direction = Direction.LEFT;
@@ -194,6 +196,11 @@ public class move : MonoBehaviour
         else if(other.gameObject.tag == "Battery")
         {
             Charge += 1;
+            other.gameObject.GetComponent<Activate>().Charged = true;
+        }
+        else if(other.gameObject.tag == "End")
+        {
+            SceneManager.LoadScene("End");
         }
         else
         {

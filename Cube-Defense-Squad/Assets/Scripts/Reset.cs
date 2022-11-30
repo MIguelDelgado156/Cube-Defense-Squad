@@ -4,35 +4,67 @@ using UnityEngine;
 
 public class Reset : MonoBehaviour
 {
+    private move.Direction OriginalDirection;
+    private move.varToUpdate OriginalVar;
+    private GameObject OGline;
+    public GameObject Newline;
+    public GameObject Points;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        OGline = this.transform.Find("Line").gameObject;
+        OriginalDirection = OGline.GetComponent<move>().direction;
+        OriginalVar = OGline.GetComponent<move>().state;
+        Newline = OGline;
     }
 
     public GameObject line;
     public GameObject Oldline;
-    public GameObject Newline;
 
     private Vector3 OriginalPosition;
     private Quaternion OriginalRoation;
+    public void ResetGame()
+    {
+        Oldline = this.transform.Find("Line").gameObject;
+        OriginalPosition = Oldline.transform.position;
+        OriginalRoation = Oldline.transform.rotation;
+
+
+        Newline = Instantiate(line, OriginalPosition, OriginalRoation);
+        Newline.GetComponent<move>().direction = OriginalDirection;
+        Newline.GetComponent<move>().state = OriginalVar;
+        Destroy(Oldline);
+        Newline.transform.parent = gameObject.transform;
+        Newline.name = "Line";
+
+        foreach (Transform child in Points.transform)
+        {
+            if (child.tag == "Point")
+            {
+                child.gameObject.SetActive(true);
+            }
+            if (child.tag == "Mirror")
+            {
+                Destroy(child.gameObject);
+            }
+        }
+    }
+
+    public void StartGame()
+    {
+        foreach (Transform child in Points.transform)
+        {
+            if (child.tag == "Point" || child.tag == "Point_Face_1")
+            {
+                child.gameObject.SetActive(false);
+            }
+        }
+        Newline.GetComponent<move>().startFunc();
+    }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyUp(KeyCode.R))
-        {
-            Oldline = this.transform.Find("Line").gameObject;
-            OriginalPosition = Oldline.transform.position;
-            OriginalRoation = Oldline.transform.rotation;
-
-
-            Newline = Instantiate(line, OriginalPosition, OriginalRoation);
-            Newline.GetComponent<move>().direction = Oldline.GetComponent<move>().direction;
-            Newline.GetComponent<move>().state = Oldline.GetComponent<move>().state;
-            Destroy(Oldline);
-            Newline.transform.parent = gameObject.transform;
-            Newline.name = "Line";
-        }
     }
 }

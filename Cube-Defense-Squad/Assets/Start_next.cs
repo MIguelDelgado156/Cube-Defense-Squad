@@ -5,6 +5,7 @@ using UnityEngine;
 public class Start_next : MonoBehaviour
 {
     public GameObject Laser;
+    public GameObject mainLaser;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,7 +19,12 @@ public class Start_next : MonoBehaviour
     }
 
     public void StartLaser(){
-        Laser.GetComponent<move>().startFunc();
+        mainLaser.transform.GetChild(5).gameObject.GetComponent<move>().startFunc();
+    }
+
+    public void ResetLine(){
+        Laser = mainLaser.transform.GetChild(5).gameObject;
+        print(Laser);
     }
 
     void OnTriggerEnter(Collider other)

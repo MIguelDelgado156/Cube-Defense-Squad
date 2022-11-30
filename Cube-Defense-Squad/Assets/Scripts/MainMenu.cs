@@ -13,7 +13,7 @@ public class MainMenu : MonoBehaviour
 
     public void ReturnToMain()
     {
-        SceneManager.LoadScene("Main_Menu");
+        SceneManager.LoadScene("startMenu");
     }
 
     // Update is called once per frame

@@ -12,6 +12,7 @@ TagManager:
   - Spliter
   - End
   - Point_Face_1
+  - Point_Face_2
   layers:
   - Default
   - TransparentFX

@@ -200,7 +200,8 @@ public class move : MonoBehaviour
         }
         else if(other.gameObject.tag == "End")
         {
-            SceneManager.LoadScene("End");
+            GameObject.Find("LevelMan").GetComponent<Test>().completedLevel(SceneManager.GetActiveScene().buildIndex - 1);
+            SceneManager.LoadScene("Success");
         }
         else
         {

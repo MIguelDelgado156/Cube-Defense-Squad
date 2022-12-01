@@ -5,37 +5,32 @@ using UnityEngine;
 public class Test : MonoBehaviour
 {
     // Start is called before the first frame update
-    void Start()
+    public GameObject[] Levels;
+    void Awake()
     {
-        
+        // DontDestroyOnLoad(transform.gameObject);
     }
 
-    void Update()
-    {
-        RotateController();
-    }
-    public GameObject target;
-    void RotateController()
-    {
-        if(Input.GetKey(KeyCode.W))
-        {
-            //LeanTween.rotate(this.gameObject, new Vector3(CurrRotX += 90f, this.transform.rotation.y, this.transform.rotation.z), 1f);
-            transform.RotateAround(target.transform.position, Vector3.right, 20 * Time.deltaTime * 10f);
-        }
-        else if(Input.GetKey(KeyCode.S))
-        {
-            //LeanTween.rotate(this.gameObject, new Vector3(CurrRotX += 90f, this.transform.rotation.y, this.transform.rotation.z), 1f);
-            this.transform.RotateAround(target.transform.position, Vector3.left, 20 * Time.deltaTime * 10f);
-        }
-        else if(Input.GetKey(KeyCode.A))
-        {
-            //LeanTween.rotate(this.gameObject, new Vector3(CurrRotX += 90f, this.transform.rotation.y, this.transform.rotation.z), 1f);
-            this.transform.RotateAround(target.transform.position, Vector3.up, 20 * Time.deltaTime * 10f);
-        }
-        else if(Input.GetKey(KeyCode.D))
-        {
-            //LeanTween.rotate(this.gameObject, new Vector3(CurrRotX += 90f, this.transform.rotation.y, this.transform.rotation.z), 1f);
-            this.transform.RotateAround(target.transform.position, Vector3.down, 20 * Time.deltaTime * 10f);
+    public void completedLevel(int level){
+        switch (level){
+        case 1:
+            StaticVars.Lvl1Complete = true;
+            break;
+        case 2:
+            StaticVars.Lvl2Complete = true;
+            break;
+        case 3:
+            StaticVars.Lvl3Complete = true;
+            break;
+        case 4:
+            StaticVars.Lvl4Complete = true;
+            break;
+        case 5:
+            StaticVars.Lvl5Complete = true;
+            break;
+        case 6:
+            StaticVars.Lvl6Complete = true;
+            break;
         }
     }
 }

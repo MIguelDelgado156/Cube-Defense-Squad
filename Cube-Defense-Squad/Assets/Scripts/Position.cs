@@ -54,6 +54,20 @@ public class Position : MonoBehaviour
                     NewMirror.transform.parent = gameObject.transform.parent.transform;
                     hit.collider.gameObject.SetActive(false);
                 }
+                if (hit.collider.gameObject.tag == "Point_Face_2")
+                {
+                    NewMirror = Instantiate(Mirror, hit.transform.position, Quaternion.Euler((int)possibleRotation, 180, 0));
+                    MirrorOrientation = NewMirror.GetComponent<Reflect>();
+
+                    if(possibleRotation == MirrorRotation.leftUp)
+                        MirrorOrientation.currentOrientation = Reflect.ReflectState.LeftUP;
+
+                    if(possibleRotation == MirrorRotation.rightUp)
+                        MirrorOrientation.currentOrientation = Reflect.ReflectState.RightUP;
+
+                    NewMirror.transform.parent = gameObject.transform.parent.transform;
+                    hit.collider.gameObject.SetActive(false);
+                }
             }
         }
     }

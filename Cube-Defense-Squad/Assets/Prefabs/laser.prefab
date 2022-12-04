@@ -130,9 +130,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1441914cb154b64baa57be54e6dfbf7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Newline: {fileID: 0}
+  Points: {fileID: 0}
   line: {fileID: 4057857131832068996, guid: 6c2989f48f7181844b793c7bf6e836d7, type: 3}
   Oldline: {fileID: 0}
-  Newline: {fileID: 0}
 --- !u!1 &2994919835726444511
 GameObject:
   m_ObjectHideFlags: 0
@@ -464,6 +465,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2063639688870665780}
     m_Modifications:
+    - target: {fileID: 4057857131832068992, guid: 6c2989f48f7181844b793c7bf6e836d7, type: 3}
+      propertyPath: m_Center.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4057857131832068992, guid: 6c2989f48f7181844b793c7bf6e836d7, type: 3}
+      propertyPath: m_Center.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4057857131832068994, guid: 6c2989f48f7181844b793c7bf6e836d7, type: 3}
       propertyPath: m_RootOrder
       value: 5

@@ -40,7 +40,7 @@ public class Reset : MonoBehaviour
 
         foreach (Transform child in Points.transform)
         {
-            if (child.tag == "Point" || child.tag == "Point_Face_1" || child.tag == "Point_Face_2")
+            if (child.tag == "Point" || child.tag == "Point_Face_1" || child.tag == "Point_Face_2" || child.tag == "Point_Face_3" || child.tag == "Point_Face_4" || child.tag == "Point_Face_5")
             {
                 child.gameObject.SetActive(true);
             }
@@ -55,7 +55,7 @@ public class Reset : MonoBehaviour
     {
         foreach (Transform child in Points.transform)
         {
-            if (child.tag == "Point" || child.tag == "Point_Face_1" || child.tag == "Point_Face_2")
+            if (child.tag == "Point" || child.tag == "Point_Face_1" || child.tag == "Point_Face_2" || child.tag == "Point_Face_3" || child.tag == "Point_Face_4" || child.tag == "Point_Face_5")
             {
                 child.gameObject.SetActive(false);
             }

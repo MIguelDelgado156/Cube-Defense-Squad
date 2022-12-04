@@ -13,6 +13,9 @@ TagManager:
   - End
   - Point_Face_1
   - Point_Face_2
+  - Point_Face_3
+  - Point_Face_4
+  - Point_Face_5
   layers:
   - Default
   - TransparentFX

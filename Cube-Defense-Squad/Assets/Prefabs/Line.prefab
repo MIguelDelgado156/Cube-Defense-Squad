@@ -147,6 +147,7 @@ MonoBehaviour:
   lineRenderer: {fileID: 4057857131832068995}
   collider: {fileID: 4057857131832068992}
   CurrentIndex: 0
+  Charge: 0
   Speed: 50
   StartGame: 0
   state: 1
@@ -163,7 +164,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.100000024, y: 0.1, z: 0.07950238}
-  m_Center: {x: 5.8254013e-16, y: 0, z: 0.95900714}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &4057857131832069119
 Rigidbody:
   m_ObjectHideFlags: 0

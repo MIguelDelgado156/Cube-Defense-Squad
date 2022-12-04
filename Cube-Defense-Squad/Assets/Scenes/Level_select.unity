@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 7718535}
   - component: {fileID: 7718534}
   - component: {fileID: 7718533}
+  - component: {fileID: 7718536}
   m_Layer: 5
   m_Name: Level4
   m_TagString: Untagged
@@ -205,7 +206,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7718534}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7718536}
+        m_TargetAssemblyTypeName: ChangeScene, Assembly-CSharp
+        m_MethodName: MoveToScene
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 5
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &7718534
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -244,6 +257,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7718531}
   m_CullTransparentMesh: 1
+--- !u!114 &7718536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7718531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca4080f34acafa947aca92fcab0c251f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &70333934
 GameObject:
   m_ObjectHideFlags: 0
@@ -406,6 +431,7 @@ GameObject:
   - component: {fileID: 239789441}
   - component: {fileID: 239789440}
   - component: {fileID: 239789439}
+  - component: {fileID: 239789442}
   m_Layer: 5
   m_Name: Level6
   m_TagString: Untagged
@@ -476,7 +502,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 239789440}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 239789442}
+        m_TargetAssemblyTypeName: ChangeScene, Assembly-CSharp
+        m_MethodName: MoveToScene
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 7
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &239789440
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -515,6 +553,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 239789437}
   m_CullTransparentMesh: 1
+--- !u!114 &239789442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 239789437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca4080f34acafa947aca92fcab0c251f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &379001365
 GameObject:
   m_ObjectHideFlags: 0
@@ -527,6 +577,7 @@ GameObject:
   - component: {fileID: 379001369}
   - component: {fileID: 379001368}
   - component: {fileID: 379001367}
+  - component: {fileID: 379001370}
   m_Layer: 5
   m_Name: Level5
   m_TagString: Untagged
@@ -597,7 +648,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 379001368}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 379001370}
+        m_TargetAssemblyTypeName: ChangeScene, Assembly-CSharp
+        m_MethodName: MoveToScene
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 6
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &379001368
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -636,6 +699,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 379001365}
   m_CullTransparentMesh: 1
+--- !u!114 &379001370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 379001365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca4080f34acafa947aca92fcab0c251f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &399744113
 GameObject:
   m_ObjectHideFlags: 0
@@ -1417,6 +1492,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1348375243}
+  - component: {fileID: 1348375244}
   m_Layer: 0
   m_Name: SceneMan
   m_TagString: Untagged
@@ -1438,6 +1514,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1348375244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1348375242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2d816ae4794c7c45b3bf105c8e9bc31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1655322855
 GameObject:
   m_ObjectHideFlags: 0

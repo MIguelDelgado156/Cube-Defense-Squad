@@ -6,6 +6,7 @@ public class Start_next : MonoBehaviour
 {
     public GameObject Laser;
     public GameObject mainLaser;
+    public bool ManualStart;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,7 +16,8 @@ public class Start_next : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(ManualStart)
+            StartLaser();
     }
 
     public void StartLaser(){

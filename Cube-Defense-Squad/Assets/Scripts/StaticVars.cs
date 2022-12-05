@@ -11,4 +11,5 @@ public static class StaticVars
     public static bool Lvl4Complete;
     public static bool Lvl5Complete;
     public static bool Lvl6Complete;
+    public static float volume = 0.5f;
 }

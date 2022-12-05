@@ -32,5 +32,6 @@ public class Test : MonoBehaviour
             StaticVars.Lvl6Complete = true;
             break;
         }
+        SaveSystem.Save();
     }
 }

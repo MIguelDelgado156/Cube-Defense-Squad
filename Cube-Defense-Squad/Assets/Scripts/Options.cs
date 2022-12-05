@@ -9,6 +9,7 @@ public class Options : MonoBehaviour
     public GameObject optionButton;
     public GameObject exitButton;
     public GameObject Logo2;
+    public GameObject VolumeSlider;
     public int OptionSwitch = 1;
 
     public void OptionButton()
@@ -21,6 +22,7 @@ public class Options : MonoBehaviour
             optionButton.SetActive(false);
             exitButton.SetActive(false);
             Logo2.SetActive(true);
+            VolumeSlider.SetActive(true);
 
         }
         else if (OptionSwitch == 0)
@@ -31,7 +33,7 @@ public class Options : MonoBehaviour
             optionButton.SetActive(true);
             exitButton.SetActive(true);
             Logo2.SetActive(false);
-
+            VolumeSlider.SetActive(false);
         }
 
     }

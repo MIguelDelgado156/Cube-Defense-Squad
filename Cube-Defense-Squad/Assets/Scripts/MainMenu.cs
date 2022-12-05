@@ -13,6 +13,7 @@ public class MainMenu : MonoBehaviour
 
     public void ReturnToMain()
     {
+        SaveSystem.Save();
         SceneManager.LoadScene("startMenu");
     }
 

@@ -110,9 +110,9 @@ public class CubeController : MonoBehaviour
         CurrRotY = 0f;
     }
 
-    void Update()
-    {
-        RotateController();
-        Rotation();
-    }
+    //void Update()
+    //{
+    //    RotateController();
+    //    Rotation();
+    //}
 }

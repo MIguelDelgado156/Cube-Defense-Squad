@@ -61,6 +61,7 @@ public class Reset : MonoBehaviour
             }
         }
         Newline.GetComponent<move>().startFunc();
+        this.GetComponent<AudioSource>().Play();
     }
 
     // Update is called once per frame
